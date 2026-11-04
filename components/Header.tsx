@@ -11,10 +11,14 @@ export default function Header({ lang, d }: { lang: Locale; d: Dict }) {
     { href: `/${lang}/iletisim`, label: d.nav.contact },
   ];
   return (
-    <header className="sticky top-0 z-40 border-b border-black/5 bg-white/85 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-black/5 bg-white">
       <div className="container-x flex h-16 md:h-20 items-center justify-between gap-6">
-        <Link href={`/${lang}`} aria-label="Life Now">
-          <Image src="/img/logo.jpg" alt="Life Now" width={720} height={560} priority className="h-11 md:h-14 w-auto mix-blend-multiply" />
+        <Link href={`/${lang}`} aria-label="Life Now Global" className="flex min-w-0 items-center gap-2 md:gap-3">
+          <Image src="/img/logo.jpg" alt="" width={720} height={560} priority className="h-11 md:h-14 w-auto shrink-0 mix-blend-multiply" />
+          <span className="whitespace-nowrap text-lg font-extrabold tracking-tight text-navy md:text-[25px]" dir="ltr">
+            Life<span className="text-brand">Now</span>
+            <small className="ms-1 hidden text-[13px] font-semibold uppercase tracking-[.08em] text-muted sm:inline lg:hidden xl:inline">Global</small>
+          </span>
         </Link>
         <nav className="hidden items-center gap-8 whitespace-nowrap font-medium lg:flex">
           {links.map((l) => (

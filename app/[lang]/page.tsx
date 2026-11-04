@@ -56,8 +56,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* Lineup */}
       <section className="bg-navy-deep text-white">
         <div className="mx-auto max-w-[1360px] px-0 py-8 sm:px-6 md:py-20">
-          <div className="relative mx-auto aspect-[1600/732] overflow-hidden sm:rounded-[2rem]">
-            <Image src="/img/row1.jpg" alt="Life Now" fill sizes="1200px" className="object-contain" />
+          <div className="relative mx-auto aspect-[3200/1464] overflow-hidden sm:rounded-[2rem]">
+            <Image src="/img/row1.webp" alt="Life Now" fill sizes="(min-width:1360px) 1360px, 100vw" className="object-contain" />
           </div>
         </div>
       </section>
