@@ -5,6 +5,7 @@ import "../globals.css";
 import { dir, getDict, isLocale, locales } from "@/lib/i18n";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingContact from "@/components/FloatingContact";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin", "latin-ext", "cyrillic"] });
@@ -36,6 +37,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         <Header lang={lang} d={d} />
         <main className="flex-1">{children}</main>
         <Footer lang={lang} d={d} />
+        <FloatingContact lang={lang} />
       </body>
     </html>
   );

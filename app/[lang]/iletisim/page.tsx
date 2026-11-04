@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { contactInfo, getDict, isLocale } from "@/lib/i18n";
+import { callLabel, telHref, waHref } from "@/lib/contact";
 
 export default async function Contact({ params }: PageProps<"/[lang]/iletisim">) {
   const { lang } = await params;
@@ -39,12 +40,15 @@ export default async function Contact({ params }: PageProps<"/[lang]/iletisim">)
           ))}
         </div>
         <a
-          href={`https://wa.me/${contactInfo.whatsapp}`}
+          href={waHref(lang)}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-red mt-8"
         >
           {d.contact.whatsapp}
+        </a>
+        <a href={telHref} className="btn btn-ghost mt-8 ms-3 text-navy">
+          {callLabel[lang]}
         </a>
       </section>
     </>

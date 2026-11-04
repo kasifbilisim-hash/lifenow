@@ -1,3 +1,4 @@
+import { PHONE_DISPLAY, WA_NUMBER } from "./contact";
 export const locales = ["tr", "en", "ru", "ar"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "tr";
@@ -371,6 +372,6 @@ export const catalog: { id: CatId; image: string; sizes: string[] }[] = [
 
 export const contactInfo = {
   email: "info@lifenow.com.tr",
-  phones: ["+90 546 601 16 63", "+90 541 825 67 64"],
-  whatsapp: "905466011663",
+  phones: [PHONE_DISPLAY],
+  whatsapp: WA_NUMBER,
 };

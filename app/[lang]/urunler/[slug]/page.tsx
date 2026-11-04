@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { catalog, catIds, getDict, isLocale, locales, contactInfo, type CatId, type Locale } from "@/lib/i18n";
+import { catalog, catIds, getDict, isLocale, locales, type CatId, type Locale } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/site";
 import { barcodeLabel, findProduct, groupTitles, productImage, products } from "@/lib/products";
 import Barcode from "@/components/Barcode";
+import { callLabel, telHref, waHref } from "@/lib/contact";
 
 const find = (slug: string) => catalog.find((c) => c.id === slug);
 
@@ -94,9 +95,10 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/urunler
           </ul>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link href={`/${lang}/iletisim`} className="btn btn-red">{d.products.quote}</Link>
-            <a href={`https://wa.me/${contactInfo.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn btn-ghost text-navy">
+            <a href={waHref(lang, `${cat.name} ${cat.sub}`)} target="_blank" rel="noopener noreferrer" className="btn btn-ghost text-navy">
               WhatsApp
             </a>
+            <a href={telHref} className="btn btn-ghost text-navy">{callLabel[lang]}</a>
           </div>
         </div>
       </section>
@@ -162,15 +164,16 @@ function SingleProduct({ lang, slug }: { lang: Locale; slug: string }) {
           <ul className="mt-3 flex flex-wrap gap-2" dir="ltr">
             <li className="rounded-full bg-paper px-4 py-1.5 text-sm font-semibold text-navy">{p.size}</li>
           </ul>
-          <p className="eyebrow mt-8">{barcodeLabel[lang]}</p>
-          <div className="mt-3 inline-block rounded-2xl border border-black/10 bg-white p-3">
-            <Barcode code={p.barcode} label={barcodeLabel[lang]} />
-          </div>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link href={`/${lang}/iletisim`} className="btn btn-red">{d.products.quote}</Link>
-            <a href={`https://wa.me/${contactInfo.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn btn-ghost text-navy">
+            <a href={waHref(lang, `${p.name[lang]} ${p.variant[lang]} ${p.size}`)} target="_blank" rel="noopener noreferrer" className="btn btn-ghost text-navy">
               WhatsApp
             </a>
+            <a href={telHref} className="btn btn-ghost text-navy">{callLabel[lang]}</a>
+          </div>
+          <p className="eyebrow mt-10">{barcodeLabel[lang]}</p>
+          <div className="mt-3 inline-block rounded-2xl border border-black/10 bg-white p-3">
+            <Barcode code={p.barcode} label={barcodeLabel[lang]} />
           </div>
         </div>
       </section>
