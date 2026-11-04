@@ -38,7 +38,7 @@ export type Dict = {
   home: { catTitle: string; catText: string; all: string; stepsTitle: string; steps: { t: string; d: string }[] };
   banner: string;
   cta: { title: string; text: string; b1: string; b2: string };
-  products: { title: string; text: string; sizes: string; download: string };
+  products: { title: string; text: string; sizes: string; download: string; back: string; quote: string; detail: string };
   about: { title: string; lead: string; p: string[]; company: string };
   contact: { title: string; text: string; address: string; phone: string; email: string; whatsapp: string; addr: string };
   footer: { tagline: string; rights: string };
@@ -49,11 +49,11 @@ const tr: Dict = {
   meta: {
     title: "Life Now – Her Yıkamada, Mükemmel Temizlik",
     description:
-      "Life Now, MF Kimya'nın ev ve endüstriyel kullanıma yönelik deterjan ve temizlik ürünleri markasıdır. Gaziantep'ten dünyaya.",
+      "Life Now, ev ve endüstriyel kullanıma yönelik deterjan ve temizlik ürünleri markasıdır. Gaziantep'ten dünyaya.",
   },
   nav: { home: "Ana Sayfa", products: "Ürünler", about: "Hakkımızda", contact: "İletişim", catalog: "Katalog 2026", menu: "Menü" },
   hero: {
-    eyebrow: "MF Kimya · Gaziantep",
+    eyebrow: "Life Now Global · Gaziantep",
     title: "Her yıkamada, mükemmel temizlik.",
     text: "Ev ve endüstriyel kullanım için yüksek kalitede, uygun fiyatlı deterjan ve temizlik ürünleri. Yerli üretim, çevreye duyarlı çözümler.",
     cta1: "Ürünleri keşfet",
@@ -91,15 +91,18 @@ const tr: Dict = {
     text: "2026 kataloğumuzdaki tüm ürün grupları ve ambalaj boyutları.",
     sizes: "Ambalaj boyutları",
     download: "Katalog 2026 (PDF)",
+    back: "Tüm ürünler",
+    quote: "Teklif iste",
+    detail: "Detayları gör",
   },
   about: {
     title: "Hakkımızda",
     lead: "Gaziantep'te kurulmuş yerli bir temizlik ürünleri üreticisiyiz.",
     p: [
-      "MF Kimya Sanayi ve Ticaret Limited Şirketi, Gaziantep'te kurulmuş yerli bir temizlik ürünleri üreticisidir. Ev ve endüstriyel kullanıma yönelik deterjan ve temizlik ürünlerini, yüksek kalite standartlarında ve uygun fiyatlarla müşterilerine sunmaktadır.",
-      "Kurulduğu günden bu yana müşteri memnuniyetini ve ürün kalitesini ön planda tutan firmamız, çevreye duyarlı ve etkili çözümler üretmeyi ilke edinmiştir. MF Kimya, güvenilir hizmet anlayışıyla temizlik sektöründe kalıcı bir yer edinmeyi ve daha temiz bir gelecek için çalışmayı sürdürmektedir.",
+      "Life Now Global, Gaziantep'te kurulmuş yerli bir temizlik ürünleri üreticisidir. Ev ve endüstriyel kullanıma yönelik deterjan ve temizlik ürünlerini, yüksek kalite standartlarında ve uygun fiyatlarla müşterilerine sunmaktadır.",
+      "Kurulduğu günden bu yana müşteri memnuniyetini ve ürün kalitesini ön planda tutan firmamız, çevreye duyarlı ve etkili çözümler üretmeyi ilke edinmiştir. Life Now Global, güvenilir hizmet anlayışıyla temizlik sektöründe kalıcı bir yer edinmeyi ve daha temiz bir gelecek için çalışmayı sürdürmektedir.",
     ],
-    company: "MF Kimya Sanayi ve Ticaret Limited Şirketi",
+    company: "Life Now Global",
   },
   contact: {
     title: "İletişim",
@@ -129,11 +132,11 @@ const en: Dict = {
   meta: {
     title: "Life Now – Perfect Cleaning, Every Wash",
     description:
-      "Life Now is the household and industrial detergent and cleaning brand of MF Kimya, made in Gaziantep, Turkey.",
+      "Life Now is the household and industrial detergent and cleaning brand of Life Now Global, made in Gaziantep, Turkey.",
   },
   nav: { home: "Home", products: "Products", about: "About us", contact: "Contact", catalog: "Catalogue 2026", menu: "Menu" },
   hero: {
-    eyebrow: "MF Kimya · Gaziantep, Türkiye",
+    eyebrow: "Life Now Global · Gaziantep, Türkiye",
     title: "Perfect cleaning, every wash.",
     text: "High-quality, affordable detergents and cleaning products for household and industrial use. Locally made, eco-friendly solutions.",
     cta1: "Explore products",
@@ -171,15 +174,18 @@ const en: Dict = {
     text: "All product ranges and pack sizes from our 2026 catalogue.",
     sizes: "Pack sizes",
     download: "Catalogue 2026 (PDF)",
+    back: "All products",
+    quote: "Request a quote",
+    detail: "View details",
   },
   about: {
     title: "About us",
     lead: "A local cleaning products manufacturer based in Gaziantep.",
     p: [
-      "MF Kimya Sanayi ve Ticaret Limited Company is a local cleaning products manufacturer based in Gaziantep, Turkey. We offer household and industrial cleaning solutions that meet high quality standards at affordable prices.",
-      "Since the day we were founded, our company has prioritized customer satisfaction and product quality, producing effective and eco-friendly solutions. MF Kimya aims to establish a lasting presence in the cleaning industry and is committed to working toward a cleaner future.",
+      "Life Now Global is a local cleaning products manufacturer based in Gaziantep, Turkey. We offer household and industrial cleaning solutions that meet high quality standards at affordable prices.",
+      "Since the day we were founded, our company has prioritized customer satisfaction and product quality, producing effective and eco-friendly solutions. Life Now Global aims to establish a lasting presence in the cleaning industry and is committed to working toward a cleaner future.",
     ],
-    company: "MF Kimya Sanayi ve Ticaret Limited Company",
+    company: "Life Now Global",
   },
   contact: {
     title: "Contact",
@@ -209,11 +215,11 @@ const ru: Dict = {
   meta: {
     title: "Life Now – Идеальная чистота при каждой стирке",
     description:
-      "Life Now — бренд бытовых и промышленных моющих и чистящих средств компании MF Kimya, Газиантеп, Турция.",
+      "Life Now — бренд бытовых и промышленных моющих и чистящих средств компании Life Now Global, Газиантеп, Турция.",
   },
   nav: { home: "Главная", products: "Продукция", about: "О нас", contact: "Контакты", catalog: "Каталог 2026", menu: "Меню" },
   hero: {
-    eyebrow: "MF Kimya · Газиантеп, Турция",
+    eyebrow: "Life Now Global · Газиантеп, Турция",
     title: "Идеальная чистота при каждой стирке.",
     text: "Качественные моющие и чистящие средства по доступным ценам для дома и промышленности. Местное производство, экологичные решения.",
     cta1: "Смотреть продукцию",
@@ -251,15 +257,18 @@ const ru: Dict = {
     text: "Все линейки и фасовки из каталога 2026.",
     sizes: "Фасовки",
     download: "Каталог 2026 (PDF)",
+    back: "Вся продукция",
+    quote: "Запросить предложение",
+    detail: "Подробнее",
   },
   about: {
     title: "О нас",
     lead: "Местный производитель чистящих средств из Газиантепа.",
     p: [
-      "Компания MF Kimya Sanayi ve Ticaret Limited — это местный производитель чистящих средств, базирующийся в Газиантепе, Турция. Мы предлагаем бытовые и промышленные средства для чистки, соответствующие высоким стандартам качества по доступным ценам.",
-      "С момента основания наша компания делает акцент на удовлетворении потребностей клиентов и качестве продукции, разрабатывая эффективные и экологичные решения. MF Kimya стремится занять прочное место в сфере чистящих средств и продолжает работать ради более чистого будущего.",
+      "Компания Life Now Global — это местный производитель чистящих средств, базирующийся в Газиантепе, Турция. Мы предлагаем бытовые и промышленные средства для чистки, соответствующие высоким стандартам качества по доступным ценам.",
+      "С момента основания наша компания делает акцент на удовлетворении потребностей клиентов и качестве продукции, разрабатывая эффективные и экологичные решения. Life Now Global стремится занять прочное место в сфере чистящих средств и продолжает работать ради более чистого будущего.",
     ],
-    company: "MF Kimya Sanayi ve Ticaret Limited",
+    company: "Life Now Global",
   },
   contact: {
     title: "Контакты",
@@ -289,11 +298,11 @@ const ar: Dict = {
   meta: {
     title: "لايف ناو – تنظيف مثالي مع كل غسلة",
     description:
-      "لايف ناو هي علامة منظفات ومنتجات تنظيف منزلية وصناعية من شركة MF Kimya في غازي عنتاب، تركيا.",
+      "لايف ناو هي علامة منظفات ومنتجات تنظيف منزلية وصناعية من شركة Life Now Global في غازي عنتاب، تركيا.",
   },
   nav: { home: "الرئيسية", products: "المنتجات", about: "من نحن", contact: "اتصل بنا", catalog: "كتالوج 2026", menu: "القائمة" },
   hero: {
-    eyebrow: "MF Kimya · غازي عنتاب، تركيا",
+    eyebrow: "Life Now Global · غازي عنتاب، تركيا",
     title: "تنظيف مثالي مع كل غسلة.",
     text: "منظفات ومنتجات تنظيف عالية الجودة وبأسعار مناسبة للاستخدام المنزلي والصناعي. إنتاج محلي وحلول صديقة للبيئة.",
     cta1: "اكتشف المنتجات",
@@ -331,15 +340,18 @@ const ar: Dict = {
     text: "جميع مجموعات المنتجات وأحجام العبوات في كتالوج 2026.",
     sizes: "أحجام العبوات",
     download: "كتالوج 2026 (PDF)",
+    back: "جميع المنتجات",
+    quote: "اطلب عرض سعر",
+    detail: "عرض التفاصيل",
   },
   about: {
     title: "من نحن",
     lead: "شركة محلية لتصنيع منتجات التنظيف في غازي عنتاب.",
     p: [
-      "شركة MF Kimya Sanayi ve Ticaret Limited هي شركة محلية متخصصة في صناعة منتجات التنظيف، ومقرها في غازي عنتاب، تركيا. نقدم حلول تنظيف منزلية وصناعية بجودة عالية وأسعار مناسبة.",
-      "منذ تأسيسنا، نضع رضا العملاء وجودة المنتجات على رأس أولوياتنا، ونحرص على تقديم حلول فعّالة وصديقة للبيئة. تسعى MF Kimya إلى ترسيخ مكانتها في قطاع التنظيف، وتواصل العمل من أجل مستقبل أنظف.",
+      "شركة Life Now Global هي شركة محلية متخصصة في صناعة منتجات التنظيف، ومقرها في غازي عنتاب، تركيا. نقدم حلول تنظيف منزلية وصناعية بجودة عالية وأسعار مناسبة.",
+      "منذ تأسيسنا، نضع رضا العملاء وجودة المنتجات على رأس أولوياتنا، ونحرص على تقديم حلول فعّالة وصديقة للبيئة. تسعى Life Now Global إلى ترسيخ مكانتها في قطاع التنظيف، وتواصل العمل من أجل مستقبل أنظف.",
     ],
-    company: "MF Kimya Sanayi ve Ticaret Limited",
+    company: "Life Now Global",
   },
   contact: {
     title: "اتصل بنا",

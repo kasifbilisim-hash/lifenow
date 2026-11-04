@@ -5,6 +5,7 @@ import "../globals.css";
 import { dir, getDict, isLocale, locales } from "@/lib/i18n";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin", "latin-ext", "cyrillic"] });
 const arabic = Noto_Sans_Arabic({ variable: "--font-arabic", subsets: ["arabic"] });
@@ -18,9 +19,10 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   if (!isLocale(lang)) return {};
   const d = getDict(lang);
   return {
+    metadataBase: new URL(SITE_URL),
     title: d.meta.title,
     description: d.meta.description,
-    alternates: { languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])) },
+    alternates: { canonical: `/${lang}`, languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])) },
   };
 }
 

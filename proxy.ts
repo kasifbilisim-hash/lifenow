@@ -1,5 +1,7 @@
 ﻿import { NextRequest, NextResponse } from "next/server";
 import { locales, defaultLocale, isLocale, type Locale } from "@/lib/i18n";
+import { legacyProductCategory, legacyStaticPaths } from "@/lib/legacy";
+import { SITE_URL } from "@/lib/site";
 
 const COOKIE = "NEXT_LOCALE";
 
@@ -23,9 +25,37 @@ function fromAcceptLanguage(header: string | null): Locale {
 }
 
 export function proxy(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+  const { pathname, search } = req.nextUrl;
+  const host = (req.headers.get("host") ?? "").split(":")[0].toLowerCase();
+
+  // 1) Üretimde www'suz adres → www (301). Google'da iki sürüm de indeksli.
+  if (host === "lifenow.com.tr") {
+    return NextResponse.redirect(`${SITE_URL}${pathname}${search}`, 301);
+  }
+
+  // 2) Eski ürün sayfaları: /u/<ad>-<id>  → yeni ürün grubu sayfası (301).
+  const old = pathname.match(/^\/u\/([^/]+)\/?$/);
+  if (old) {
+    const cat = legacyProductCategory(old[1]);
+    const url = req.nextUrl.clone();
+    url.pathname = cat ? `/tr/urunler/${cat}` : "/tr/urunler";
+    url.search = "";
+    return NextResponse.redirect(url, 301);
+  }
+
+  // 3) Eski sabit sayfalar (301).
+  const stat = legacyStaticPaths[pathname.replace(/\/$/, "").toLowerCase()];
+  if (stat) {
+    const url = req.nextUrl.clone();
+    url.pathname = stat;
+    url.search = "";
+    return NextResponse.redirect(url, 301);
+  }
+
+  // 4) Dil öneki olan adresler olduğu gibi açılır.
   if (locales.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`))) return;
 
+  // 5) Dil öneki olmayan adresler: çerez veya tarayıcı diline göre (geçici, 307).
   const saved = req.cookies.get(COOKIE)?.value;
   const locale: Locale =
     saved && isLocale(saved) ? saved : fromAcceptLanguage(req.headers.get("accept-language"));
@@ -38,3 +68,4 @@ export function proxy(req: NextRequest) {
 export const config = {
   matcher: ["/((?!_next|img|.*\\..*|api).*)"],
 };
+

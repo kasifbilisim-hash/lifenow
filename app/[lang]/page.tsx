@@ -75,7 +75,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {catalog.slice(0, 6).map((c) => (
-            <Link key={c.id} href={`/${lang}/urunler#${c.id}`} className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+            <Link key={c.id} href={`/${lang}/urunler/${c.id}`} className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
               <div className="relative aspect-[16/10] bg-paper">
                 <Image src={`/img/${c.image}.jpg`} alt={d.cats[c.id].name} fill sizes="400px" className="object-contain p-4 mix-blend-multiply" />
               </div>
