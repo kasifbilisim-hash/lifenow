@@ -1,6 +1,6 @@
 ﻿import { NextRequest, NextResponse } from "next/server";
 import { locales, defaultLocale, isLocale, type Locale } from "@/lib/i18n";
-import { legacyProductCategory, legacyStaticPaths } from "@/lib/legacy";
+import { legacyProductPath, legacyStaticPaths } from "@/lib/legacy";
 import { SITE_URL } from "@/lib/site";
 
 const COOKIE = "NEXT_LOCALE";
@@ -33,12 +33,12 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(`${SITE_URL}${pathname}${search}`, 301);
   }
 
-  // 2) Eski ürün sayfaları: /u/<ad>-<id>  → yeni ürün grubu sayfası (301).
+  // 2) Eski ürün sayfaları: /u/<ad>-<id>  → yeni ürün sayfası (301).
   const old = pathname.match(/^\/u\/([^/]+)\/?$/);
   if (old) {
-    const cat = legacyProductCategory(old[1]);
+    const target = legacyProductPath(old[1]);
     const url = req.nextUrl.clone();
-    url.pathname = cat ? `/tr/urunler/${cat}` : "/tr/urunler";
+    url.pathname = target ? `/tr${target}` : "/tr/urunler";
     url.search = "";
     return NextResponse.redirect(url, 301);
   }

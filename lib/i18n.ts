@@ -21,10 +21,6 @@ export const catIds = [
   "kutu",
   "kutu-beyaz",
   "paket",
-  "bulasik",
-  "bidon",
-  "sabun",
-  "yumusatici",
 ] as const;
 export type CatId = (typeof catIds)[number];
 
@@ -121,10 +117,6 @@ const tr: Dict = {
     kutu: { name: "Matik Deterjan Kutu", sub: "Beyazlar ve Renkliler" },
     "kutu-beyaz": { name: "Matik Deterjan Kutu", sub: "Beyazlar" },
     paket: { name: "Matik Deterjan Paket", sub: "Renkliler ve Beyazlar" },
-    bulasik: { name: "Sıvı Bulaşık & Genel Temizlik", sub: "Bulaşık deterjanı, Asprin sprey, Sarı Güç" },
-    bidon: { name: "Ekonomik Boy Sıvılar", sub: "Bulaşık deterjanı, Asprin, Ultra Yoğun Çamaşır Suyu" },
-    sabun: { name: "Sıvı Sabun", sub: "Gül Bahçesi · Lavanta Bahçesi" },
-    yumusatici: { name: "Yumuşatıcı", sub: "Extra Yumuşatıcı · Gül · Lavanta" },
   },
 };
 
@@ -204,10 +196,6 @@ const en: Dict = {
     kutu: { name: "Machine Detergent Box", sub: "Whites and Colors" },
     "kutu-beyaz": { name: "Machine Detergent Box", sub: "Whites" },
     paket: { name: "Machine Detergent Pack", sub: "Colors and Whites" },
-    bulasik: { name: "Dishwashing & Cleaning Liquids", sub: "Dish detergent, Asprin spray, Ultra Power spray" },
-    bidon: { name: "Economy Size Liquids", sub: "Dish detergent, Asprin, Ultra Thick Bleach" },
-    sabun: { name: "Liquid Soap", sub: "Rose Garden · Lavender Garden" },
-    yumusatici: { name: "Laundry Softener", sub: "Extra Softener · Rose · Lavender" },
   },
 };
 
@@ -287,10 +275,6 @@ const ru: Dict = {
     kutu: { name: "Порошок в коробке", sub: "Белое и цветное бельё" },
     "kutu-beyaz": { name: "Порошок в коробке", sub: "Белизна" },
     paket: { name: "Порошок в пакете", sub: "Цветное и белое бельё" },
-    bulasik: { name: "Средства для посуды и уборки", sub: "Для посуды, Asprin спрей, Ultra Güç спрей" },
-    bidon: { name: "Экономичные канистры", sub: "Для посуды, Asprin, Ультра густая белизна" },
-    sabun: { name: "Жидкое мыло", sub: "Розовый сад · Лавандовый сад" },
-    yumusatici: { name: "Кондиционер для белья", sub: "Extra · Роза · Лаванда" },
   },
 };
 
@@ -370,10 +354,6 @@ const ar: Dict = {
     kutu: { name: "علبة منظف الغسيل الآلي", sub: "الأبيض والملون" },
     "kutu-beyaz": { name: "علبة منظف الغسيل الآلي", sub: "الأبيض" },
     paket: { name: "عبوة منظف الغسيل الآلي", sub: "الملون والأبيض" },
-    bulasik: { name: "سائل الأطباق والتنظيف العام", sub: "سائل الأطباق، بخاخ Asprin، بخاخ Ultra Güç" },
-    bidon: { name: "سوائل بأحجام اقتصادية", sub: "سائل الأطباق، Asprin، مبيّض فائق التركيز" },
-    sabun: { name: "صابون سائل", sub: "حديقة الورد · حديقة اللافندر" },
-    yumusatici: { name: "منعم الأقمشة", sub: "إكسترا · ورد · لافندر" },
   },
 };
 
@@ -387,10 +367,6 @@ export const catalog: { id: CatId; image: string; sizes: string[] }[] = [
   { id: "kutu", image: "cat-kutu", sizes: ["100 g", "250 g", "450 g", "500 g", "1 kg", "1,5 kg", "2,5 kg", "3 kg", "4,5 kg"] },
   { id: "kutu-beyaz", image: "cat-kutu-beyaz", sizes: ["100 g", "250 g", "450 g", "500 g", "1 kg", "1,5 kg", "2,5 kg", "3 kg", "4,5 kg"] },
   { id: "paket", image: "cat-paket", sizes: ["10 g", "17 g", "20 g", "80 g", "100 g"] },
-  { id: "bulasik", image: "cat-bulasik", sizes: ["650 ml", "750 ml", "1000 ml"] },
-  { id: "bidon", image: "cat-bidon", sizes: ["4000 ml", "4 L"] },
-  { id: "sabun", image: "cat-sabun", sizes: ["500 ml", "3 L"] },
-  { id: "yumusatici", image: "row3", sizes: ["1440 ml", "3 L", "4 L"] },
 ];
 
 export const contactInfo = {

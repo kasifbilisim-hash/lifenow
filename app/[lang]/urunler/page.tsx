@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { catalog, getDict, isLocale } from "@/lib/i18n";
+import { groupTitles, productGroups, productImage, products } from "@/lib/products";
 
 export default async function Products({ params }: PageProps<"/[lang]/urunler">) {
   const { lang } = await params;
@@ -18,7 +19,31 @@ export default async function Products({ params }: PageProps<"/[lang]/urunler">)
         </div>
       </section>
 
-      <div className="container-x space-y-6 py-10 md:py-16">
+      {productGroups.map((g) => (
+        <section key={g} id={g} className="container-x scroll-mt-28 pb-10 first:pt-10 md:pb-16 md:first:pt-16">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl">{groupTitles[g][lang]}</h2>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {products.filter((p) => p.group === g).map((p) => (
+              <Link
+                key={p.slug}
+                href={`/${lang}/urunler/${p.slug}`}
+                className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="relative aspect-[4/5] bg-paper">
+                  <Image src={productImage(p)} alt={`${p.name[lang]} ${p.variant[lang]} ${p.size}`} fill sizes="(min-width:1024px) 360px, (min-width:640px) 45vw, 100vw" className="object-contain p-6 mix-blend-multiply" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-semibold text-navy">{p.name[lang]}</h3>
+                  <p className="text-sm text-muted">{p.variant[lang]}</p>
+                  <span className="mt-3 inline-block rounded-full bg-paper px-3 py-1 text-sm font-semibold text-navy" dir="ltr">{p.size}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <div className="container-x space-y-6 pb-10 pt-4 md:pb-16">
         {catalog.map((c, i) => (
           <article
             key={c.id}

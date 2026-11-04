@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { catIds, locales } from "@/lib/i18n";
+import { products } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 
-const pages = ["", "/urunler", "/hakkimizda", "/iletisim", ...catIds.map((id) => `/urunler/${id}`)];
+const pages = ["", "/urunler", "/hakkimizda", "/iletisim", ...catIds.map((id) => `/urunler/${id}`), ...products.map((p) => `/urunler/${p.slug}`)];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return pages.flatMap((p) =>
