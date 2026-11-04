@@ -26,7 +26,7 @@ export default async function Products({ params }: PageProps<"/[lang]/urunler">)
               i % 2 ? "md:[&>div:first-child]:order-2" : ""
             }`}
           >
-            <div className="relative aspect-[4/3] bg-paper">
+            <div className="relative aspect-[16/10] bg-paper">
               <Image src={`/img/${c.image}.jpg`} alt={d.cats[c.id].name} fill sizes="(min-width:768px) 600px, 100vw" className="object-contain p-4 mix-blend-multiply" />
             </div>
             <div className="p-8 md:p-10">

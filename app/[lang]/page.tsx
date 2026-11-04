@@ -29,7 +29,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </div>
           </div>
           <div className="relative mx-auto aspect-[5/6] w-full max-w-md overflow-hidden rounded-[2.5rem] shadow-2xl">
-            <Image src="/img/hero.jpg" alt="Life Now" fill priority sizes="(min-width:768px) 450px, 90vw" className="object-cover" />
+            <Image src="/img/hero.jpg" alt="Life Now" fill priority sizes="(min-width:768px) 450px, 90vw" className="object-cover object-top" />
           </div>
         </div>
       </section>
@@ -56,8 +56,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* Lineup */}
       <section className="bg-navy-deep text-white">
         <div className="container-x py-20">
-          <div className="relative aspect-[3/1.35] overflow-hidden rounded-[2rem] md:aspect-[3/1]">
-            <Image src="/img/row1.jpg" alt="Life Now" fill sizes="1200px" className="object-cover" />
+          <div className="relative mx-auto aspect-[1600/732] overflow-hidden rounded-[2rem]">
+            <Image src="/img/row1.jpg" alt="Life Now" fill sizes="1200px" className="object-contain" />
           </div>
         </div>
       </section>
@@ -76,8 +76,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {catalog.slice(0, 6).map((c) => (
             <Link key={c.id} href={`/${lang}/urunler#${c.id}`} className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-              <div className="relative aspect-[4/3] bg-paper">
-                <Image src={`/img/${c.image}.jpg`} alt={d.cats[c.id].name} fill sizes="400px" className="object-contain p-3 mix-blend-multiply" />
+              <div className="relative aspect-[16/10] bg-paper">
+                <Image src={`/img/${c.image}.jpg`} alt={d.cats[c.id].name} fill sizes="400px" className="object-contain p-4 mix-blend-multiply" />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-navy">{d.cats[c.id].name}</h3>
