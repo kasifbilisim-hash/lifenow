@@ -10,14 +10,14 @@ export default async function Products({ params }: PageProps<"/[lang]/urunler">)
   return (
     <>
       <section className="bg-paper">
-        <div className="container-x py-20">
-          <h1 className="text-5xl font-bold tracking-tight text-navy md:text-6xl">{d.products.title}</h1>
+        <div className="container-x py-12 md:py-20">
+          <h1 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl lg:text-6xl">{d.products.title}</h1>
           <p className="mt-4 max-w-xl text-lg text-muted">{d.products.text}</p>
           <a href="/Katalog_2026.pdf" target="_blank" className="btn btn-red mt-8">{d.products.download}</a>
         </div>
       </section>
 
-      <div className="container-x space-y-6 py-16">
+      <div className="container-x space-y-6 py-10 md:py-16">
         {catalog.map((c, i) => (
           <article
             key={c.id}

@@ -24,12 +24,12 @@ export default async function Contact({ params }: PageProps<"/[lang]/iletisim">)
   return (
     <>
       <section className="bg-paper">
-        <div className="container-x py-20">
-          <h1 className="text-5xl font-bold tracking-tight text-navy md:text-6xl">{d.contact.title}</h1>
+        <div className="container-x py-12 md:py-20">
+          <h1 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl lg:text-6xl">{d.contact.title}</h1>
           <p className="mt-4 max-w-xl text-lg text-muted">{d.contact.text}</p>
         </div>
       </section>
-      <section className="container-x py-16">
+      <section className="container-x py-10 md:py-16">
         <div className="grid gap-4 md:grid-cols-3">
           {rows.map((r) => (
             <div key={r.label} className="rounded-3xl border border-black/5 p-8 shadow-sm">

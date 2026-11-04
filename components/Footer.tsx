@@ -6,7 +6,7 @@ import { contactInfo } from "@/lib/i18n";
 export default function Footer({ lang, d }: { lang: Locale; d: Dict }) {
   return (
     <footer className="bg-navy-deep text-white">
-      <div className="container-x grid gap-10 py-16 md:grid-cols-3">
+      <div className="container-x grid gap-10 py-12 md:py-16 md:grid-cols-3">
         <div>
           <Image src="/img/logo.jpg" alt="Life Now" width={720} height={560} className="h-20 w-auto rounded-xl" />
           <p className="mt-5 max-w-xs text-lg font-semibold">{d.footer.tagline}</p>

@@ -38,3 +38,7 @@ html[dir="rtl"] .eyebrow { letter-spacing: 0; }
 .container-x { max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
 .rtl-flip { display: inline-block; }
 html[dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+
+@media (min-width: 1536px) { .container-x { max-width: 1360px; } }
+.btn { white-space: nowrap; }
+h1, h2 { text-wrap: balance; overflow-wrap: anywhere; }

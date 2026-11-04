@@ -14,7 +14,7 @@ export default function LangSwitch({ lang }: { lang: Locale }) {
           href={`/${l}${rest}`}
           hrefLang={l}
           title={localeNames[l]}
-          className={`rounded-full px-2.5 py-1 font-semibold uppercase transition ${
+          className={`rounded-full px-3 py-1.5 font-semibold uppercase transition ${
             l === lang ? "bg-navy text-white" : "text-muted hover:text-navy"
           }`}
         >
