@@ -1,7 +1,7 @@
 ﻿import Link from "next/link";
 import Image from "next/image";
 import type { Dict, Locale } from "@/lib/i18n";
-import LangSwitch from "./LangSwitch";
+import LangSwitch, { LangSelect } from "./LangSwitch";
 
 export default function Header({ lang, d }: { lang: Locale; d: Dict }) {
   const links = [
@@ -29,8 +29,10 @@ export default function Header({ lang, d }: { lang: Locale; d: Dict }) {
             {d.nav.catalog}
           </a>
         </div>
-        <details className="group relative lg:hidden">
-          <summary className="btn btn-ghost cursor-pointer list-none !py-2 text-sm">{d.nav.menu}</summary>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LangSelect lang={lang} />
+          <details className="group relative">
+          <summary className="btn btn-ghost h-10 cursor-pointer list-none !py-0 text-sm">{d.nav.menu}</summary>
           <div className="absolute end-0 mt-3 w-64 space-y-4 rounded-2xl border border-black/5 bg-white p-5 shadow-xl">
             {links.map((l) => (
               <Link key={l.href} href={l.href} className="block font-medium">
@@ -40,9 +42,9 @@ export default function Header({ lang, d }: { lang: Locale; d: Dict }) {
             <a href="/Katalog_2026.pdf" target="_blank" className="block font-medium text-brand">
               {d.nav.catalog}
             </a>
-            <LangSwitch lang={lang} />
           </div>
         </details>
+        </div>
       </div>
     </header>
   );
