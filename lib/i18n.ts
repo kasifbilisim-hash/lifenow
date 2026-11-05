@@ -372,6 +372,6 @@ export const catalog: { id: CatId; image: string; sizes: string[] }[] = [
 
 export const contactInfo = {
   email: "info@lifenow.com.tr",
-  phones: [PHONE_DISPLAY],
+  phones: [PHONE_DISPLAY, "+90 546 601 16 63"],
   whatsapp: WA_NUMBER,
 };

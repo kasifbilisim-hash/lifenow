@@ -133,7 +133,7 @@ function SingleProduct({ lang, slug }: { lang: Locale; slug: string }) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: `${title} ${p.size}`,
-    gtin13: p.barcode,
+    ...(p.barcode ? { gtin13: p.barcode } : {}),
     brand: { "@type": "Brand", name: "Life Now" },
     manufacturer: { "@type": "Organization", name: "Life Now Global" },
     image: `${SITE_URL}${productImage(p)}`,
@@ -171,10 +171,14 @@ function SingleProduct({ lang, slug }: { lang: Locale; slug: string }) {
             </a>
             <a href={telHref} className="btn btn-ghost text-navy">{callLabel[lang]}</a>
           </div>
+          {p.barcode && (
+            <>
           <p className="eyebrow mt-10">{barcodeLabel[lang]}</p>
           <div className="mt-3 inline-block rounded-2xl border border-black/10 bg-white p-3">
             <Barcode code={p.barcode} label={barcodeLabel[lang]} />
           </div>
+            </>
+          )}
         </div>
       </section>
 

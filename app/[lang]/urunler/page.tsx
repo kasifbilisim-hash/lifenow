@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { catalog, getDict, isLocale } from "@/lib/i18n";
+import { getDict, isLocale } from "@/lib/i18n";
 import { groupTitles, productGroups, productImage, products } from "@/lib/products";
 
 export default async function Products({ params }: PageProps<"/[lang]/urunler">) {
@@ -43,34 +43,6 @@ export default async function Products({ params }: PageProps<"/[lang]/urunler">)
         </section>
       ))}
 
-      <div className="container-x space-y-6 pb-10 pt-4 md:pb-16">
-        {catalog.map((c, i) => (
-          <article
-            key={c.id}
-            id={c.id}
-            className={`grid scroll-mt-28 items-center gap-8 overflow-hidden rounded-[2rem] border border-black/5 bg-white shadow-sm md:grid-cols-2 ${
-              i % 2 ? "md:[&>div:first-child]:order-2" : ""
-            }`}
-          >
-            <div className="relative aspect-[16/10] bg-paper">
-              <Image src={`/img/${c.image}.jpg`} alt={d.cats[c.id].name} fill sizes="(min-width:768px) 600px, 100vw" className="object-contain p-4 mix-blend-multiply" />
-            </div>
-            <div className="p-8 md:p-10">
-              <h2 className="text-3xl font-bold text-navy">
-                <Link href={`/${lang}/urunler/${c.id}`} className="hover:text-brand">{d.cats[c.id].name}</Link>
-              </h2>
-              <p className="mt-1 text-muted">{d.cats[c.id].sub}</p>
-              <p className="eyebrow mt-8">{d.products.sizes}</p>
-              <ul className="mt-3 flex flex-wrap gap-2" dir="ltr">
-                {c.sizes.map((s) => (
-                  <li key={s} className="rounded-full bg-paper px-4 py-1.5 text-sm font-semibold text-navy">{s}</li>
-                ))}
-              </ul>
-              <Link href={`/${lang}/urunler/${c.id}`} className="btn btn-ghost mt-7 text-navy !py-2.5 text-sm">{d.products.detail} <span className="rtl-flip">→</span></Link>
-            </div>
-          </article>
-        ))}
-      </div>
     </>
   );
 }
