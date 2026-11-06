@@ -12,9 +12,9 @@ export default function Header({ lang, d }: { lang: Locale; d: Dict }) {
   ];
   return (
     <header className="sticky top-0 z-40 border-b border-black/5 bg-white">
-      <div className="container-x flex h-[72px] md:h-24 items-center justify-between gap-6">
+      <div className="container-x flex h-24 md:h-32 items-center justify-between gap-6">
         <Link href={`/${lang}`} aria-label="Life Now Global" className="flex min-w-0 items-center gap-2 md:gap-3">
-          <Image src="/img/logo.jpg" alt="" width={720} height={560} priority className="h-14 md:h-[72px] w-auto shrink-0 mix-blend-multiply" />
+          <Image src="/img/logo.jpg" alt="" width={720} height={560} priority className="h-[72px] md:h-24 w-auto shrink-0 mix-blend-multiply" />
         </Link>
         <nav className="hidden items-center gap-8 whitespace-nowrap font-medium lg:flex">
           {links.map((l) => (
