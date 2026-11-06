@@ -2,14 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDict, isLocale } from "@/lib/i18n";
-import { productImage, products, type ProductGroup } from "@/lib/products";
-
-type L4 = Record<"tr" | "en" | "ru" | "ar", string>;
-const categories: { id: string; title: L4; groups: ProductGroup[] }[] = [
-  { id: "matikler", title: { tr: "Matikler", en: "Automatic Detergents", ru: "Автомат", ar: "الغسيل الأوتوماتيك" }, groups: ["matik", "kutu"] },
-  { id: "elde-yikama", title: { tr: "Elde Yıkama", en: "Hand Wash", ru: "Ручная стирка", ar: "الغسيل اليدوي" }, groups: ["elde"] },
-  { id: "likitler", title: { tr: "Likitler", en: "Liquids", ru: "Жидкие средства", ar: "السوائل" }, groups: ["bulasik", "bidon", "sabun", "yumusatici"] },
-];
+import { categories } from "@/lib/categories";
 
 export default async function Products({ params }: PageProps<"/[lang]/urunler">) {
   const { lang } = await params;
@@ -26,36 +19,24 @@ export default async function Products({ params }: PageProps<"/[lang]/urunler">)
         </div>
       </section>
 
-      <div className="container-x flex flex-wrap gap-3 pt-8">
-        {categories.map((c) => (
-          <a key={c.id} href={`#${c.id}`} className="rounded-full border border-black/10 bg-white px-5 py-2 font-semibold text-navy transition hover:border-brand hover:text-brand">{c.title[lang]}</a>
-        ))}
-      </div>
-
-      {categories.map((g) => (
-        <section key={g.id} id={g.id}className="container-x scroll-mt-28 pb-10 first:pt-10 md:pb-16 md:first:pt-16">
-          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl">{g.title[lang]}</h2>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {products.filter((p) => g.groups.includes(p.group)).map((p) => (
-              <Link
-                key={p.slug}
-                href={`/${lang}/urunler/${p.slug}`}
-                className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="relative aspect-[4/5] bg-paper">
-                  <Image src={productImage(p)} alt={`${p.name[lang]} ${p.variant[lang]} ${p.size}`} fill sizes="(min-width:1024px) 360px, (min-width:640px) 45vw, 100vw" className="object-contain p-6 mix-blend-multiply" />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-navy">{p.name[lang]}</h3>
-                  <p className="text-sm text-muted">{p.variant[lang]}</p>
-                  <span className="mt-3 inline-block rounded-full bg-paper px-3 py-1 text-sm font-semibold text-navy" dir="ltr">{p.size}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      ))}
-
+      <section className="container-x py-10 md:py-16">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((c) => (
+            <Link
+              key={c.id}
+              href={`/${lang}/urunler/${c.id}`}
+              className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="relative aspect-[4/3] bg-paper">
+                <Image src={c.image} alt={c.title[lang]} fill sizes="(min-width:1024px) 400px, (min-width:640px) 45vw, 100vw" className="object-contain p-6 mix-blend-multiply" />
+              </div>
+              <div className="p-5">
+                <h2 className="text-xl font-bold text-navy">{c.title[lang]}</h2>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
