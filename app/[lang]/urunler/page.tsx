@@ -2,7 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDict, isLocale } from "@/lib/i18n";
-import { groupTitles, productGroups, productImage, products } from "@/lib/products";
+import { productImage, products, type ProductGroup } from "@/lib/products";
+
+type L4 = Record<"tr" | "en" | "ru" | "ar", string>;
+const categories: { id: string; title: L4; groups: ProductGroup[] }[] = [
+  { id: "matikler", title: { tr: "Matikler", en: "Automatic Detergents", ru: "Автомат", ar: "الغسيل الأوتوماتيك" }, groups: ["matik", "kutu"] },
+  { id: "elde-yikama", title: { tr: "Elde Yıkama", en: "Hand Wash", ru: "Ручная стирка", ar: "الغسيل اليدوي" }, groups: ["elde"] },
+  { id: "likitler", title: { tr: "Likitler", en: "Liquids", ru: "Жидкие средства", ar: "السوائل" }, groups: ["bulasik", "bidon", "sabun", "yumusatici"] },
+];
 
 export default async function Products({ params }: PageProps<"/[lang]/urunler">) {
   const { lang } = await params;
@@ -19,11 +26,17 @@ export default async function Products({ params }: PageProps<"/[lang]/urunler">)
         </div>
       </section>
 
-      {productGroups.map((g) => (
-        <section key={g} id={g} className="container-x scroll-mt-28 pb-10 first:pt-10 md:pb-16 md:first:pt-16">
-          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl">{groupTitles[g][lang]}</h2>
+      <div className="container-x flex flex-wrap gap-3 pt-8">
+        {categories.map((c) => (
+          <a key={c.id} href={`#${c.id}`} className="rounded-full border border-black/10 bg-white px-5 py-2 font-semibold text-navy transition hover:border-brand hover:text-brand">{c.title[lang]}</a>
+        ))}
+      </div>
+
+      {categories.map((g) => (
+        <section key={g.id} id={g.id}className="container-x scroll-mt-28 pb-10 first:pt-10 md:pb-16 md:first:pt-16">
+          <h2 className="text-2xl font-bold tracking-tight text-navy sm:text-3xl">{g.title[lang]}</h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {products.filter((p) => p.group === g).map((p) => (
+            {products.filter((p) => g.groups.includes(p.group)).map((p) => (
               <Link
                 key={p.slug}
                 href={`/${lang}/urunler/${p.slug}`}
